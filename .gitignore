@@ -3,3 +3,5 @@ ckpt_root/
 dataset/
 *.pkl
 */__pycache__/
+.venv/
+meodels/pretrained/

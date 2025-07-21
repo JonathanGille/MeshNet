@@ -29,3 +29,12 @@ def get_test_config(config_file='config/test_config.yaml'):
     _check_dir(cfg['dataset']['data_root'], make_dir=False)
 
     return cfg
+
+def get_emb_config(config_file='config/emb_config.yaml'):
+    with open(config_file, 'r') as f:
+        cfg = yaml.load(f, Loader=yaml.loader.SafeLoader)
+
+    _check_dir(cfg['dataset']['data_root'], make_dir=False)
+
+    return cfg
+

@@ -3,7 +3,7 @@ cuda_devices: '0,1'   # multi-gpu training is available
 
 # dataset
 dataset:
-  data_root: 'dataset/ModelNet40_processed'
+  data_root: 'dataset/Manifold40_processed'
   max_faces: 500
   augment_data: true
   jitter_sigma: 0.01

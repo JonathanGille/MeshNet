@@ -16,7 +16,7 @@ def find_neighbor(faces, faces_contain_this_vertex, vf1, vf2, except_face):
 
 if __name__ == '__main__':
     root = Path('dataset/Manifold40')
-    new_root = Path('dataset/ModelNet40_processed')
+    new_root = Path('dataset/Manifold_processed')
     max_faces = 500
     shape_list = sorted(list(root.glob('*/*/*.obj')))
     ms = pymeshlab.MeshSet()
