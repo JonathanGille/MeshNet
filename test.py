@@ -32,17 +32,20 @@ def test_model(model):
             targets = targets.cuda()
 
             outputs, feas = model(centers, corners, normals, neighbor_index)
-            _, preds = torch.max(outputs, 1)
+            print(outputs[0].size())
+            print('#######################')
+            print(feas[0].size())
+            # _, preds = torch.max(outputs, 1)
 
-            correct_num += (preds == targets).float().sum()
+            # correct_num += (preds == targets).float().sum()
 
-            if cfg['retrieval_on']:
-                ft_all = append_feature(ft_all, feas.detach().cpu())
-                lbl_all = append_feature(lbl_all, targets.detach().cpu(), flaten=True)
+            # if cfg['retrieval_on']:
+            #     ft_all = append_feature(ft_all, feas.detach().cpu())
+            #     lbl_all = append_feature(lbl_all, targets.detach().cpu(), flaten=True)
 
-    print('Accuracy: {:.4f}'.format(float(correct_num) / len(data_set)))
-    if cfg['retrieval_on']:
-        print('mAP: {:.4f}'.format(calculate_map(ft_all, lbl_all)))
+    # print('Accuracy: {:.4f}'.format(float(correct_num) / len(data_set)))
+    # if cfg['retrieval_on']:
+    #     print('mAP: {:.4f}'.format(calculate_map(ft_all, lbl_all)))
 
 
 if __name__ == '__main__':

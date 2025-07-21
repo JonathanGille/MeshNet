@@ -3,7 +3,7 @@ cuda_devices: '0'
 
 # dataset
 dataset:
-  data_root: 'dataset/emb_test'
+  data_root: 'dataset/emb2'
   augment_data: false
   max_faces: 500
 

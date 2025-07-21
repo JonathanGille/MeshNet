@@ -6,7 +6,7 @@ from models import SpatialDescriptor, StructuralDescriptor, MeshConvolution
 class MeshEmb(nn.Module):
 
     def __init__(self, cfg, require_fea=False):
-        super(MeshNet, self).__init__()
+        super(MeshEmb, self).__init__()
         self.require_fea = require_fea
 
         self.spatial_descriptor = SpatialDescriptor()
@@ -43,14 +43,9 @@ class MeshEmb(nn.Module):
         spatial_fea3 = self.fusion_mlp(torch.cat([spatial_fea2, structural_fea2], 1))
 
         fea = self.concat_mlp(torch.cat([spatial_fea1, spatial_fea2, spatial_fea3], 1)) # b, c, n
-        if self.training:
-            fea = fea[:, :, torch.randperm(fea.size(2))[:int(fea.size(2) * (1 - self.mask_ratio))]]
-        fea = torch.max(fea, dim=2)[0]
-        fea = fea.reshape(fea.size(0), -1)
-        fea = self.classifier[:-1](fea)
-        cls = self.classifier[-1:](fea)
 
-        if self.require_fea:
-            return cls, fea / torch.norm(fea)
-        else:
-            return cls
+        fea = torch.max(fea, dim=2)[0]
+        
+        fea = fea / torch.norm(fea)
+
+        return fea

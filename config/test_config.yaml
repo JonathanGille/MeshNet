@@ -3,7 +3,7 @@ cuda_devices: '0'
 
 # dataset
 dataset:
-  data_root: 'dataset/Manifold40_processed'
+  data_root: 'dataset/emb_test'
   augment_data: false
   max_faces: 500
 
