@@ -4,4 +4,5 @@ dataset/
 *.pkl
 */__pycache__/
 .venv/
-meodels/pretrained/
+MeshSolver/models/pretrained/
+ImageSolver/model_manager/finetuned_models
