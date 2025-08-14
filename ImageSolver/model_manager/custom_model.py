@@ -7,8 +7,8 @@ class CustomModel():
     def __init__(self, base_model_name, pretrained=True):
         self.model = timm.create_model(base_model_name, pretrained=pretrained)
         self.base_model_name = base_model_name
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.model.to(self.device)
+        #self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        #self.model.to(self.device)
         self.model.eval()
 
     def load_weights_api(self, name):

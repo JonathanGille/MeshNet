@@ -22,7 +22,7 @@ class CustomImage():
             transforms.ToTensor(),
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
         ])
-        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        #device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         image = image.convert("RGB")
-        return transform(image).unsqueeze(0).to(device)  # Batch-Dimension + GPU
+        return transform(image) # ohne batch-dimesnion (da dataloader das schon übernimmt)/ noch nicht auf GPU verschieben
 
